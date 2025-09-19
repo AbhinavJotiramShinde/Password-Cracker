@@ -1,6 +1,6 @@
 #  Multi-Threaded Hash Cracker
 
-A simple **multi-threaded hash-cracking tool** that can recover plaintext passwords from a given hash using either:
+A Python-based Password Cracker with a Graphical User Interface (GUI) that can recover plaintext passwords from a given hash using either:
 - **Dictionary (wordlist) attacks**, or
 - **Brute-force attacks** with configurable character sets and lengths.
 
@@ -28,23 +28,24 @@ Usage
  Dictionary / Wordlist Attack
  Crack a hash by testing each password from a wordlist.
 
-python hash_cracker.py <hash> -w <wordlist_path> --hash_type <hash_type>
+Normal version:
+python password_cracker.py <hash> -w <wordlist_path> --hash_type <hash_type>
 
-Example:
-python hash_cracker.py 5d41402abc4b2a76b9719d911017c592 -w rorfrw.txt --hash_type md5
-This tries every password in rockyou.txt against the provided MD5 hash.
+Gui version:
+python password_cracker_v2.0.py
+
 
 Brute-Force Attack:
 Generate all possible passwords within a length range.
 
-python hash_cracker.py <hash> --hash_type <hash_type> --min_length <min> --max_length <max> [-c <characters>] [--max_workers <threads>]
+python password_cracker.py <hash> --hash_type <hash_type> --min_length <min> --max_length <max> [-c <characters>] [--max_workers <threads>]
 Example:
 
 python hash_cracker.py 2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae \
   --hash_type sha256 \
   --min_length 3 \
   --max_length 4 \
-  -c abc123 \
+  -c ofo123 \
   --max_workers 8
 This brute-forces every 3–4 character combination of a b c 1 2 3 using SHA-256 and 8 worker threads.
 
